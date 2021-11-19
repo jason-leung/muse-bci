@@ -21,22 +21,18 @@ circle_b = visual.Circle(win=mywin, radius=100, units='pix', pos=[0,0], fillColo
 circle_g = visual.Circle(win=mywin, radius=100, units='pix', pos=[0,0], fillColor=[-1,1,-1])
 
 # experimental setup
-num_blocks = 1
-num_trials = 10
-# num_blocks = 3
-# num_trials = 40
+num_blocks = 3
+num_trials = 40
 oddball_chance = 0.25
 fixation_duration = [0.3, 0.5]
 stimulus_duration = [0.8, 1.2]
-
 trials = [int(i < round(num_trials*oddball_chance)) for i in range(num_trials)]
-
-# short pause at start
-core.wait(5.0)
 
 # start experiment
 for b in range(num_blocks):
 	shuffle(trials)
+	# short pause at beginning of block
+	core.wait(5.0)
 	for t in range(num_trials):
 		# fixation
 		stream_outlet.push_sample(['fixation'])
