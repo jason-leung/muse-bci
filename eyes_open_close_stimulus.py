@@ -25,7 +25,8 @@ trial_duration = 120 # seconds
 trials = [1-i%2 for i in range(num_trials)]
 
 # start experiment
-core.wait(5.0)
+for frameNum in range(5 * fps):
+	mywin.flip()
 for t in range(num_trials):
 	nextFlip = mywin.getFutureFlipTime(clock='ptb')
 	for frameNum in range(trial_duration * fps):
